@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+</head>
+<body>
+<form method="post" style="width:40%;" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+</form>
+<br>
+<br>
+<br>
+<br>
+
+<h3>User Data</h3>
+<table border="1px">
+    {% if reg %}
+    <tr>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Gender</th>
+        <th>Flat</th>
+        <th>Street</th>
+        <th>Country</th>
+        <th>Profile</th>
+    </tr>
+    {% for rg in reg %}
+    <tr>
+        <td>{{rg.name}}</td>
+        <td>{{rg.dob}}</td>
+        <td>{{rg.email}}</td>
+        <td>{{rg.phone}}</td>
+        <td>{{rg.gender}}</td>
+        <td>{{rg.flat}}</td>
+        <td>{{rg.street}}</td>
+        <td>{{rg.country}}</td>
+        <td>{{rg.img}}</td>
+    </tr>
+    {% endfor %}
+    {% else %}
+        <h3>Sorry, No record found</h3>
+    {% endif %}
+</table>
+</body>
+</html>
